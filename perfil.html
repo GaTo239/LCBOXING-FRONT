@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - LC Boxing</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="image/logo.png" alt="LC Boxing" class="sidebar-logo">
+            <h2>LC BOXING</h2>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="javascript:history.back()" class="nav-item">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver al Dashboard</span>
+            </a>
+            <a href="#info" class="nav-item active" data-section="info">
+                <i class="fas fa-user"></i>
+                <span>Información Personal</span>
+            </a>
+            <a href="#seguridad" class="nav-item" data-section="seguridad">
+                <i class="fas fa-lock"></i>
+                <span>Seguridad</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <p class="user-name" id="userName">Usuario</p>
+                    <p class="user-role" id="userRole">Rol</p>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="content-header">
+            <div class="header-left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="headerTitle">Mi Perfil</h1>
+            </div>
+            <div class="header-right">
+                <div class="clock" id="clock">00:00</div>
+            </div>
+        </header>
+
+        <!-- Información Personal -->
+        <section id="info-section" class="content-section active">
+            <div class="table-container">
+                <div class="card-header">
+                    <h3><i class="fas fa-user"></i> Información Personal</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="perfilForm" class="modal-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidoPaterno">Apellido Paterno</label>
+                                <input type="text" id="apellidoPaterno" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="apellidoMaterno">Apellido Materno</label>
+                                <input type="text" id="apellidoMaterno" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" class="form-control" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rol">Rol</label>
+                                <input type="text" id="rol" class="form-control" readonly disabled>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seguridad -->
+        <section id="seguridad-section" class="content-section">
+            <div class="table-container">
+                <div class="card-header">
+                    <h3><i class="fas fa-lock"></i> Cambiar Contraseña</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="passwordForm" class="modal-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Contraseña Actual</label>
+                            <input type="password" id="currentPassword" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newPassword">Nueva Contraseña</label>
+                            <input type="password" id="newPassword" class="form-control" minlength="8" required>
+                            <small style="color: #6c757d;">Mínimo 8 caracteres</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="confirmPassword" class="form-control" minlength="8" required>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-key"></i> Actualizar Contraseña
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notificaciones -->
+        <section id="notificaciones-section" class="content-section">
+            <div class="table-container">
+                <div class="card-header">
+                    <h3><i class="fas fa-bell"></i> Preferencias de Notificaciones</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="notificacionesForm" class="modal-form">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifEmail" checked>
+                                <span>Notificaciones por Email</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifMembresias" checked>
+                                <span>Alertas de Membresías por Vencer</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifPagos" checked>
+                                <span>Notificaciones de Pagos</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifAsistencias">
+                                <span>Resumen Diario de Asistencias</span>
+                            </label>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Preferencias
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+</html>

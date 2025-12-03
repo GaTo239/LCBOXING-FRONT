@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Gerente - LC Boxing</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Export libraries for PDF/Image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="image/logo.png" alt="LC Boxing" class="sidebar-logo">
+            <h2>LC BOXING</h2>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#atletas" class="nav-item" data-section="atletas">
+                <i class="fas fa-users"></i>
+                <span>Atletas</span>
+            </a>
+            <a href="#membresias" class="nav-item" data-section="membresias">
+                <i class="fas fa-id-card"></i>
+                <span>Membresías</span>
+            </a>
+            <a href="#pagos" class="nav-item" data-section="pagos">
+                <i class="fas fa-credit-card"></i>
+                <span>Pagos</span>
+            </a>
+            <a href="#asistencias" class="nav-item" data-section="asistencias">
+                <i class="fas fa-calendar-check"></i>
+                <span>Asistencias</span>
+            </a>
+            <a href="#usuarios" class="nav-item" data-section="usuarios">
+                <i class="fas fa-user-shield"></i>
+                <span>Usuarios</span>
+            </a>
+            <a href="#reportes" class="nav-item" data-section="reportes">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reportes</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="perfil.html" class="user-info" style="text-decoration: none; color: inherit; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <p class="user-name" id="userName">Cargando...</p>
+                    <p class="user-role" id="userRole">Gerente</p>
+                </div>
+            </a>
+            <button class="btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="content-header">
+            <div class="header-left">
+                <button class="btn-menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="headerTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="clock" id="clock"></div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="section-dashboard" class="content-section active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="statAtletasActivos">0</h3>
+                        <p>Atletas Activos</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card success">
+                    <div class="stat-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="statMembresiasVigentes">0</h3>
+                        <p>Membresías Vigentes</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card warning">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="statAsistenciasHoy">0</h3>
+                        <p>Asistencias Hoy</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card info">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="statIngresosHoy">$0</h3>
+                        <p>Ingresos Hoy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions & Recent Activity -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="showSection('atletas')">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Nuevo Atleta</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="showSection('asistencias')">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span>Registrar Asistencia</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="showSection('pagos')">
+                            <i class="fas fa-money-bill"></i>
+                            <span>Registrar Pago</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="showSection('membresias')">
+                            <i class="fas fa-id-card-alt"></i>
+                            <span>Nueva Membresía</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Alertas</h3>
+                        <button class="btn-refresh" onclick="loadAlerts()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="loading">Cargando alertas...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atletas en Box & Próximos Vencimientos -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-dumbbell"></i> Atletas en Box</h3>
+                        <span class="badge" id="atletasEnBoxCount">0</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="atletasEnBoxTable">
+                            <thead>
+                                <tr>
+                                    <th>Atleta</th>
+                                    <th>Hora Entrada</th>
+                                    <th>Tiempo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">No hay atletas en el box</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Vencimientos Próximos</h3>
+                        <span class="badge danger" id="vencimientosCount">0</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="vencimientosTable">
+                            <thead>
+                                <tr>
+                                    <th>Atleta</th>
+                                    <th>Vencimiento</th>
+                                    <th>Días</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">No hay vencimientos próximos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Atletas Section -->
+        <section id="section-atletas" class="content-section">
+            <div class="section-toolbar">
+                <button class="btn btn-primary" onclick="openAtletaModal()">
+                    <i class="fas fa-plus"></i> Nuevo Atleta
+                </button>
+                <div class="toolbar-right">
+                    <input type="text" placeholder="Buscar atleta..." id="searchAtleta" class="search-input">
+                    <button class="btn btn-secondary" onclick="loadAtletas()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="atletasTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Completo</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando atletas...</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pagination" id="atletasPagination" style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:10px;">
+                    <button class="btn btn-secondary" id="atletasPrev">Prev</button>
+                    <span id="atletasPageInfo" class="text-muted">Página 1</span>
+                    <button class="btn btn-secondary" id="atletasNext">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membresías Section -->
+        <section id="section-membresias" class="content-section">
+            <div class="section-toolbar">
+                <button class="btn btn-primary" onclick="openMembresiaModal()">
+                    <i class="fas fa-plus"></i> Nueva Membresía
+                </button>
+                <div class="toolbar-right">
+                    <input type="text" placeholder="Buscar membresía..." id="searchMembresia" class="search-input">
+                    <select id="filterEstadoMembresia" class="filter-select" onchange="loadMembresias()">
+                        <option value="">Todos los estados</option>
+                        <option value="1">Activas</option>
+                        <option value="2">Vencidas</option>
+                        <option value="3">Suspendidas</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="loadMembresias()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="membresiasTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Atleta</th>
+                            <th>Tipo</th>
+                            <th>Inicio</th>
+                            <th>Vencimiento</th>
+                            <th>Sesiones</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="8" class="text-center">
+                                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando membresías...</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pagination" id="membresiasPagination" style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:10px;">
+                    <button class="btn btn-secondary" id="membresiasPrev">Prev</button>
+                    <span id="membresiasPageInfo" class="text-muted">Página 1</span>
+                    <button class="btn btn-secondary" id="membresiasNext">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagos Section -->
+        <section id="section-pagos" class="content-section">
+            <div class="section-toolbar">
+                <button class="btn btn-primary" onclick="openPagoModal()">
+                    <i class="fas fa-plus"></i> Registrar Pago
+                </button>
+                <div class="toolbar-right">
+                    <input type="text" placeholder="Buscar pago..." id="searchPago" class="search-input">
+                    <input type="date" id="filterFechaPago" class="filter-input" onchange="loadPagos()">
+                    <button class="btn btn-secondary" onclick="loadPagos()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="pagosTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Atleta</th>
+                            <th>Concepto</th>
+                            <th>Monto</th>
+                            <th>Método</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando pagos...</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pagination" id="pagosPagination" style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:10px;">
+                    <button class="btn btn-secondary" id="pagosPrev">Prev</button>
+                    <span id="pagosPageInfo" class="text-muted">Página 1</span>
+                    <button class="btn btn-secondary" id="pagosNext">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asistencias Section -->
+        <section id="section-asistencias" class="content-section">
+            <div class="section-toolbar">
+                <button class="btn btn-primary" onclick="openAsistenciaModal()">
+                    <i class="fas fa-plus"></i> Registrar Entrada
+                </button>
+                <div class="toolbar-right">
+                    <input type="text" placeholder="Buscar asistencia..." id="searchAsistencia" class="search-input">
+                    <input type="date" id="filterFechaAsistencia" class="filter-input" onchange="loadAsistencias()">
+                    <button class="btn btn-secondary" onclick="loadAsistencias()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="asistenciasTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Atleta</th>
+                            <th>Fecha</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                            <th>Duración</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="8" class="text-center">
+                                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando asistencias...</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pagination" id="asistenciasPagination" style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:10px;">
+                    <button class="btn btn-secondary" id="asistenciasPrev">Prev</button>
+                    <span id="asistenciasPageInfo" class="text-muted">Página 1</span>
+                    <button class="btn btn-secondary" id="asistenciasNext">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usuarios Section -->
+        <section id="section-usuarios" class="content-section">
+            <div class="section-toolbar">
+                <div class="toolbar-right">
+                    <input type="text" placeholder="Buscar usuario..." id="searchUsuario" class="search-input">
+                    <select id="filterRol" class="filter-select" onchange="loadUsuarios()">
+                        <option value="">Todos los roles</option>
+                        <option value="1">Gerente</option>
+                        <option value="2">Staff</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="openUsuarioModal()">
+                        <i class="fas fa-plus"></i> Nuevo Usuario
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadUsuarios()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="usuariosTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Completo</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Teléfono</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando usuarios...</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-pagination" id="usuariosPagination" style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:10px;">
+                    <button class="btn btn-secondary" id="usuariosPrev">Prev</button>
+                    <span id="usuariosPageInfo" class="text-muted">Página 1</span>
+                    <button class="btn btn-secondary" id="usuariosNext">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reportes Section -->
+        <!-- Reportes Section Simplificada -->
+<section id="section-reportes" class="content-section">
+    <div class="reports-header">
+        <h2><i class="fas fa-chart-bar"></i> Reportes Básicos</h2>
+        <div class="reports-filters">
+            <select id="reportPeriodo" class="filter-select">
+                <option value="7">Últimos 7 días</option>
+                <option value="30" selected>Último mes</option>
+                <option value="90">Últimos 3 meses</option>
+            </select>
+            <button class="btn btn-primary" onclick="loadReportes()">
+                <i class="fas fa-sync-alt"></i> Actualizar
+            </button>
+            <button class="btn btn-secondary" onclick="descargarReporteImagen()" title="Descargar como imagen">
+                <i class="fas fa-image"></i> Imagen
+            </button>
+            <button class="btn btn-secondary" onclick="descargarReportePDF()" title="Descargar como PDF">
+                <i class="fas fa-file-pdf"></i> PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Solo 2 Gráficas Grandes -->
+    <div class="charts-grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+        
+        <!-- Gráfica 1: Ingresos (Lineal) -->
+        <div class="chart-card" id="cardIngresos">
+            <div class="chart-header">
+                <h3><i class="fas fa-dollar-sign"></i> Historial de Ingresos</h3>
+                <small id="ingresosFechaRango" class="text-muted" style="margin-left:10px"></small>
+                <div>
+                    <span class="chart-total" id="totalIngresos">$0</span>
+                    <button class="btn btn-sm btn-secondary" onclick="descargarGrafica('ingresosChart', 'ingresos')" title="Descargar gráfica" style="margin-left: 10px;">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+            <div style="height: 300px;">
+                <canvas id="ingresosChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Gráfica 2: Membresías (Dona) -->
+        <div class="chart-card" id="cardMembresias">
+            <div class="chart-header">
+                <h3><i class="fas fa-id-card"></i> Distribución de Membresías</h3>
+                <small id="membresiasInfo" class="text-muted" style="margin-left:10px"></small>
+                <div>
+                    <span class="chart-total" id="totalMembresias">0</span>
+                    <button class="btn btn-sm btn-secondary" onclick="descargarGrafica('membresiasChart', 'membresias')" title="Descargar gráfica" style="margin-left: 10px;">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+            <div style="height: 300px;">
+                <canvas id="membresiasChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+</section>
+    </main>
+
+    <!-- Modals Container -->
+    <div id="modalsContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

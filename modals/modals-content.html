@@ -1,0 +1,504 @@
+<!-- ===================================== -->
+<!-- MODAL: ATLETA (Crear/Editar) -->
+<!-- ===================================== -->
+<div id="atletaModal" class="modal">
+    <div class="modal-content modal-lg">
+        <div class="modal-header">
+            <h2><i class="fas fa-user-plus"></i> <span id="atletaModalTitle">Nuevo Atleta</span></h2>
+            <button class="modal-close" onclick="closeAtletaModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="atletaForm" class="modal-form">
+                <input type="hidden" id="atletaId">
+                
+                <!-- Información Personal -->
+                <h3 class="form-section-title"><i class="fas fa-user"></i> Información Personal</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="atletaNombre">Nombre <span class="required">*</span></label>
+                        <input type="text" id="atletaNombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="atletaApellidoPaterno">Apellido Paterno <span class="required">*</span></label>
+                        <input type="text" id="atletaApellidoPaterno" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="atletaApellidoMaterno">Apellido Materno <span class="required">*</span></label>
+                        <input type="text" id="atletaApellidoMaterno" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="atletaFechaNacimiento">Fecha de Nacimiento <span class="required">*</span></label>
+                        <input type="date" id="atletaFechaNacimiento" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="atletaGenero">Género <span class="required">*</span></label>
+                        <select id="atletaGenero" class="form-control" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="atletaEmail">Email <span class="required">*</span></label>
+                        <input type="email" id="atletaEmail" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="atletaTelefono">Teléfono <span class="required">*</span></label>
+                        <input type="tel" id="atletaTelefono" class="form-control" pattern="[0-9]{10}" required placeholder="10 dígitos">
+                    </div>
+                    <div class="form-group">
+                        <label for="atletaNotas">Notas</label>
+                        <input type="text" id="atletaNotas" class="form-control" placeholder="Notas adicionales">
+                    </div>
+                </div>
+                
+                <!-- Datos Médicos -->
+                <h3 class="form-section-title"><i class="fas fa-heartbeat"></i> Datos Médicos</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="atletaTipoSangre">Tipo de Sangre</label>
+                        <select id="atletaTipoSangre" class="form-control">
+                            <option value="">Seleccionar...</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="atletaAlergias">Alergias</label>
+                        <input type="text" id="atletaAlergias" class="form-control" placeholder="Ninguna">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="atletaPadecimientos">Condiciones Médicas</label>
+                    <textarea id="atletaPadecimientos" class="form-control" rows="3" placeholder="Describe cualquier condición médica relevante"></textarea>
+                </div>
+                
+                <!-- Contacto de Emergencia -->
+                <h3 class="form-section-title"><i class="fas fa-phone-alt"></i> Contacto de Emergencia</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactoNombre">Nombre del Contacto</label>
+                        <input type="text" id="contactoNombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactoParentesco">Parentesco</label>
+                        <input type="text" id="contactoParentesco" class="form-control" placeholder="Ej: Madre, Padre, Hermano">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactoTelefono">Teléfono del Contacto</label>
+                    <input type="tel" id="contactoTelefono" class="form-control" pattern="[0-9]{10}" placeholder="10 dígitos">
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAtletaModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Atleta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: MEMBRESÍA (Crear/Editar) -->
+<!-- ===================================== -->
+<div id="membresiaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-id-card"></i> <span id="membresiaModalTitle">Nueva Membresía</span></h2>
+            <button class="modal-close" onclick="closeMembresiaModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="membresiaForm" class="modal-form">
+                <input type="hidden" id="membresiaId">
+                
+                <div class="form-group">
+                    <label for="membresiaAtleta">Atleta <span class="required">*</span></label>
+                    <select id="membresiaAtleta" class="form-control" required>
+                        <option value="">Seleccionar atleta...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="membresiaTipo">Tipo de Membresía <span class="required">*</span></label>
+                    <select id="membresiaTipo" class="form-control" required onchange="calculateMembresiaEnd()">
+                        <option value="">Seleccionar tipo...</option>
+                        <option value="1">Diaria</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Mensual</option>
+                        <option value="4">Trimestral</option>
+                        <option value="5">Semestral</option>
+                        <option value="6">Anual</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="membresiaFechaInicio">Fecha de Inicio <span class="required">*</span></label>
+                        <input type="date" id="membresiaFechaInicio" class="form-control" required onchange="calculateMembresiaEnd()" max="2099-12-31">
+                    </div>
+                    <div class="form-group">
+                        <label for="membresiaFechaFin">Fecha de Vencimiento <span class="required">*</span></label>
+                        <input type="date" id="membresiaFechaFin" class="form-control" required max="2099-12-31">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                <div class="form-group">
+                    <label for="membresiaCosto">Costo <span class="required">*</span></label>
+                    <input type="number" id="membresiaCosto" class="form-control" step="0.01" min="0" max="999999" 
+                    required placeholder="0.00" disabled>
+                    <small class="form-text text-muted">Monto en pesos mexicanos</small>
+                </div>
+
+                    <div class="form-group">
+                        <label for="membresiaEstatus">Estatus <span class="required">*</span></label>
+                        <select id="membresiaEstatus" class="form-control" required>
+                            <option value="1">Activa</option>
+                            <option value="2">Vencida</option>
+                            <option value="3">Suspendida</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Aviso de devolución al editar -->
+                <div id="devolucionAlert" class="alert alert-warning" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Atención:</strong> Al modificar el costo de esta membresía, se registrará automáticamente una devolución del monto anterior.
+                </div>
+                
+                <div class="form-group">
+                    <label for="membresiaObservaciones">Observaciones</label>
+                    <textarea id="membresiaObservaciones" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeMembresiaModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Membresía
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: PAGO (Registrar) -->
+<!-- ===================================== -->
+<div id="pagoModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-money-bill"></i> Registrar Pago</h2>
+            <button class="modal-close" onclick="closePagoModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="pagoForm" class="modal-form">
+                <div class="form-group">
+                    <label for="pagoAtleta">Atleta <span class="required">*</span></label>
+                    <select id="pagoAtleta" class="form-control" required onchange="loadAtletaMembresias()">
+                        <option value="">Seleccionar atleta...</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pagoMembresia">Membresía <span class="required">*</span></label>
+                    <select id="pagoMembresia" class="form-control" required>
+                        <option value="">Primero seleccione un atleta...</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pagoMonto">Monto <span class="required">*</span></label>
+                        <input type="number" id="pagoMonto" class="form-control" step="0.01" min="0.01" max="999999" required placeholder="0.00">
+                        <small class="form-text text-muted">Monto mínimo: $0.01</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pagoMetodo">Método de Pago <span class="required">*</span></label>
+                        <select id="pagoMetodo" class="form-control" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                            <option value="Transferencia">Transferencia</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pagoFecha">Fecha de Pago <span class="required">*</span></label>
+                        <input type="date" id="pagoFecha" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pagoReferencia">Referencia</label>
+                        <input type="text" id="pagoReferencia" class="form-control" placeholder="Número de referencia">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pagoObservaciones">Observaciones</label>
+                    <textarea id="pagoObservaciones" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closePagoModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Registrar Pago
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: ASISTENCIA (Registrar Entrada) -->
+<!-- ===================================== -->
+<div id="asistenciaModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-clipboard-check"></i> Registrar Asistencia</h2>
+            <button class="modal-close" onclick="closeAsistenciaModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="asistenciaForm" class="modal-form">
+                <div class="form-group">
+                    <label for="asistenciaAtleta">Atleta <span class="required">*</span></label>
+                    <select id="asistenciaAtleta" class="form-control" required>
+                        <option value="">Seleccionar atleta...</option>
+                    </select>
+                    <div id="asistenciaAtletaError" class="invalid-feedback" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i> Debe seleccionar un atleta
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="asistenciaFecha">Fecha <span class="required">*</span></label>
+                        <input type="date" id="asistenciaFecha" class="form-control" required max="2099-12-31">
+                        <div id="asistenciaFechaError" class="invalid-feedback" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i> Fecha inválida
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="asistenciaHoraEntrada">Hora de Entrada <span class="required">*</span></label>
+                        <input type="time" id="asistenciaHoraEntrada" class="form-control" required>
+                        <div id="asistenciaHoraError" class="invalid-feedback" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i> Hora inválida
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alertas de validación -->
+                <div id="asistenciaValidacionAlert" class="alert alert-danger" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i> <span id="asistenciaValidacionTexto"></span>
+                </div>
+                
+                <div id="asistenciaSuccessAlert" class="alert alert-success" style="display: none;">
+                    <i class="fas fa-check-circle"></i> <span id="asistenciaSuccessTexto"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="asistenciaObservaciones">Observaciones</label>
+                    <textarea id="asistenciaObservaciones" class="form-control" rows="3" maxlength="500"></textarea>
+                    <small class="form-text text-muted">Máximo 500 caracteres</small>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> La hora de salida se registrará cuando el atleta abandone el box.
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAsistenciaModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Registrar Entrada
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: REGISTRAR SALIDA -->
+<!-- ===================================== -->
+<div id="salidaModal" class="modal">
+    <div class="modal-content modal-sm">
+        <div class="modal-header">
+            <h2><i class="fas fa-sign-out-alt"></i> Registrar Salida</h2>
+            <button class="modal-close" onclick="closeSalidaModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="salidaForm" class="modal-form">
+                <input type="hidden" id="salidaAsistenciaId">
+                
+                <div class="form-group">
+                    <label>Atleta:</label>
+                    <p id="salidaAtletaNombre" class="form-value"></p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Hora de Entrada:</label>
+                    <p id="salidaHoraEntrada" class="form-value"></p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="salidaHoraSalida">Hora de Salida <span class="required">*</span></label>
+                    <input type="time" id="salidaHoraSalida" class="form-control" required>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeSalidaModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Registrar Salida
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: USUARIO (Crear/Editar) -->
+<!-- ===================================== -->
+<div id="usuarioModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-user-shield"></i> <span id="usuarioModalTitle">Nuevo Usuario</span></h2>
+            <button class="modal-close" onclick="closeUsuarioModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="usuarioForm" class="modal-form">
+                <input type="hidden" id="usuarioId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuarioNombre">Nombre <span class="required">*</span></label>
+                        <input type="text" id="usuarioNombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuarioApellidoPaterno">Apellido Paterno <span class="required">*</span></label>
+                        <input type="text" id="usuarioApellidoPaterno" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuarioApellidoMaterno">Apellido Materno <span class="required">*</span></label>
+                        <input type="text" id="usuarioApellidoMaterno" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuarioEmail">Email <span class="required">*</span></label>
+                        <input type="email" id="usuarioEmail" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuarioTelefono">Teléfono <span class="required">*</span></label>
+                        <input type="tel" id="usuarioTelefono" class="form-control" pattern="[0-9]{10}" required placeholder="10 dígitos">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuarioFechaNacimiento">Fecha de Nacimiento <span class="required">*</span></label>
+                        <input type="date" id="usuarioFechaNacimiento" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="usuarioRol">Rol <span class="required">*</span></label>
+                        <select id="usuarioRol" class="form-control" required>
+                            <option value="">Seleccionar rol...</option>
+                            <option value="2">Staff</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuarioPassword">Contraseña <span class="required" id="passwordRequired">*</span></label>
+                        <input type="password" id="usuarioPassword" class="form-control" minlength="6">
+                        <small style="color: #6c757d;">Mínimo 6 caracteres. Dejar vacío para mantener la contraseña actual.</small>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeUsuarioModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Usuario
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: VER DETALLES DE ATLETA -->
+<!-- ===================================== -->
+<div id="detalleAtletaModal" class="modal">
+    <div class="modal-content modal-lg">
+        <div class="modal-header">
+            <h2><i class="fas fa-user"></i> Detalles del Atleta</h2>
+            <button class="modal-close" onclick="closeDetalleAtletaModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="detalleAtletaContent">
+                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Cargando información...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================================== -->
+<!-- MODAL: CONFIRMAR ELIMINACIÓN -->
+<!-- ===================================== -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content modal-sm">
+        <div class="modal-header">
+            <h2><i class="fas fa-exclamation-triangle"></i> Confirmar Acción</h2>
+            <button class="modal-close" onclick="closeConfirmModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="confirmMessage">¿Está seguro que desea realizar esta acción?</p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmButton">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

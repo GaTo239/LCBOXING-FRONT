@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | LC Boxing</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #132440 0%, #16476A 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .error-content {
+            max-width: 600px;
+        }
+        
+        .error-code {
+            font-size: 10rem;
+            font-weight: 900;
+            color: #BF092F;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 5px 20px rgba(191, 9, 47, 0.3);
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        
+        .error-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            color: #3B9797;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .error-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-buttons .btn {
+            min-width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-content">
+            <i class="fas fa-boxing-glove error-icon"></i>
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">¡Ups! Página no encontrada</h2>
+            <p class="error-description">
+                Parece que esta página decidió retirarse del ring. 
+                No te preocupes, podemos llevarte de vuelta a tu esquina.
+            </p>
+            <div class="error-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Ir al Inicio
+                </a>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver Atrás
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

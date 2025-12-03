@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LC Boxing - Sistema de Gestión Profesional</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="image/logo.png" alt="LC Boxing Logo" class="nav-logo">
+                <span>LC BOXING</span>
+            </div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#caracteristicas">Características</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#contacto">Contacto</a>
+                <a href="login.html" class="btn-login">Iniciar Sesión</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Sistema de Gestión para tu Box de <span class="highlight">Boxeo</span></h1>
+                    <p class="hero-subtitle">Administra atletas, membresías, pagos y asistencias en una sola plataforma profesional</p>
+                    <div class="hero-buttons">
+                        <a href="login.html" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
+                        <a href="#caracteristicas" class="btn btn-secondary">
+                            <i class="fas fa-play-circle"></i> Ver Más
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Atletas</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-dumbbell"></i>
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Sesiones</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <i class="fas fa-boxing-glove hero-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="caracteristicas" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Características Principales</h2>
+                <p>Todo lo que necesitas para gestionar tu box de manera eficiente</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Gestión de Atletas</h3>
+                    <p>Administra perfiles completos con datos personales, médicos y contactos de emergencia</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Membresías</h3>
+                    <p>Control total de membresías, vencimientos y sesiones disponibles en tiempo real</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Pagos</h3>
+                    <p>Registra y administra pagos con múltiples métodos y genera comprobantes automáticos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Asistencias</h3>
+                    <p>Monitorea entrada y salida de atletas con registro de duración de entrenamiento</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Reportes</h3>
+                    <p>Visualiza estadísticas y métricas importantes para la toma de decisiones</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad</h3>
+                    <p>Sistema de roles y permisos con autenticación JWT y encriptación de datos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-image">
+                    <div class="benefit-highlight">
+                        <i class="fas fa-trophy"></i>
+                        <span>Plataforma #1</span>
+                    </div>
+                </div>
+                <div class="benefits-text">
+                    <h2>¿Por qué elegir LC Boxing?</h2>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Fácil de usar</h4>
+                                <p>Interfaz intuitiva diseñada para usuarios sin experiencia técnica</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Ahorra tiempo</h4>
+                                <p>Automatiza tareas repetitivas y reduce el tiempo administrativo</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Acceso 24/7</h4>
+                                <p>Consulta información desde cualquier dispositivo en cualquier momento</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Soporte técnico</h4>
+                                <p>Equipo dedicado para resolver tus dudas y problemas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roles Section -->
+    <section class="roles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Roles del Sistema</h2>
+                <p>Diferentes niveles de acceso según tus necesidades</p>
+            </div>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-icon admin">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Administrador</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Control total del sistema</li>
+                        <li><i class="fas fa-check"></i> Gestión de usuarios</li>
+                        <li><i class="fas fa-check"></i> Reportes avanzados</li>
+                        <li><i class="fas fa-check"></i> Configuración general</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon staff">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Staff</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Gestión de atletas</li>
+                        <li><i class="fas fa-check"></i> Control de asistencias</li>
+                        <li><i class="fas fa-check"></i> Registro de pagos</li>
+                        <li><i class="fas fa-check"></i> Membresías</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para transformar tu box?</h2>
+                <p>Únete a cientos de gimnasios que ya confían en LC Boxing</p>
+                <a href="login.html" class="btn btn-cta">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contáctanos</h2>
+                <p>¿Tienes alguna pregunta? Estamos aquí para ayudarte</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>251184@ids.upchiapas.edu.mx</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+52 1 958 142 2490</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Chiapa de Corzo, Chiapas, México</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Tu nombre" required>
+                    <input type="email" placeholder="Tu email" required>
+                    <textarea placeholder="Tu mensaje" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><img src="image/logo.png" alt="LC Boxing Logo" class="footer-logo"> LC BOXING</h3>
+                    <p>Sistema de gestión profesional para boxes de boxeo</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LC Boxing. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

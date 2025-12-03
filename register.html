@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - LC Boxing</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Left Side - Form -->
+        <div class="auth-form-section">
+            <div class="auth-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </div>
+            
+            <div class="auth-form-wrapper">
+                <div class="auth-logo">
+                    <img src="image/logo.png" alt="LC Boxing Logo" class="auth-logo-img">
+                    <h1>LC BOXING</h1>
+                </div>
+                
+                <h2>Crear Cuenta</h2>
+                <p class="auth-subtitle">Únete a la familia LC Boxing</p>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">
+                                <i class="fas fa-user"></i> Nombre
+                            </label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                placeholder="Juan"
+                                required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="apellidoPaterno">
+                                <i class="fas fa-user"></i> Apellido Paterno
+                            </label>
+                            <input 
+                                type="text" 
+                                id="apellidoPaterno" 
+                                name="apellidoPaterno" 
+                                placeholder="Pérez"
+                                required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="apellidoMaterno">
+                            <i class="fas fa-user"></i> Apellido Materno
+                        </label>
+                        <input 
+                            type="text" 
+                            id="apellidoMaterno" 
+                            name="apellidoMaterno" 
+                            placeholder="García"
+                            required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Correo Electrónico
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="tu@email.com"
+                            required
+                            autocomplete="email">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">
+                                <i class="fas fa-phone"></i> Teléfono
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="telefono" 
+                                name="telefono" 
+                                placeholder="5551234567"
+                                required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fechaNacimiento">
+                                <i class="fas fa-calendar"></i> Fecha de Nacimiento
+                            </label>
+                            <input 
+                                type="date" 
+                                id="fechaNacimiento" 
+                                name="fechaNacimiento" 
+                                required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="idRol">
+                            <i class="fas fa-user-tag"></i> Tipo de Usuario
+                        </label>
+                        <select id="idRol" name="idRol" required>
+                            <option value="">Selecciona un tipo</option>
+                            <option value="1">Gerente</option>
+                            <option value="2">Staff</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Contraseña
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="••••••••"
+                                required
+                                minlength="8"
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password" onclick="togglePassword('password', 'toggleIcon1')">
+                                <i class="fas fa-eye" id="toggleIcon1"></i>
+                            </button>
+                        </div>
+                        <small class="form-hint">Mínimo 8 caracteres</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i> Confirmar Contraseña
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                placeholder="••••••••"
+                                required
+                                minlength="8"
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', 'toggleIcon2')">
+                                <i class="fas fa-eye" id="toggleIcon2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span>Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a></span>
+                        </label>
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorText"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full" id="registerBtn">
+                        <i class="fas fa-user-plus"></i> Crear Cuenta
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Right Side - Image/Info -->
+        <div class="auth-image-section">
+            <div class="auth-image-content">
+                <i class="fas fa-user-plus auth-image-icon"></i>
+                <h2>Únete a LC Boxing</h2>
+                <p>Empieza tu viaje hacia la excelencia en gestión deportiva</p>
+                
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Registro rápido y seguro</span>
+                    </div>
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Acceso inmediato</span>
+                    </div>
+                    <div class="auth-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Soporte 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="auth-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Usuarios Activos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Boxes Registrados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Creando tu cuenta...</p>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        function togglePassword(inputId, iconId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = document.getElementById(iconId);
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
